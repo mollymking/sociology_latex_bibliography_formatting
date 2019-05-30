@@ -1,25 +1,24 @@
 %%
-%% This is file `asr.bst',
-%% generated with the docstrip utility.
+%% This is file `asa.bst',
+%% originally file `asr.bst', generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
 %% genbst.mbs  (with options: `,ay,cay,nm-rev1,dt-beg,yr-per,
 %%                              tit-qq,atit-u,vnum-x,jnm-x,edby,pp,ed')
 %% ----------------------------------------
-%% *** American Sociological Review***
+%% *** American Sociological Association ***
 %%
-%% (Here are the specifications of the source file)
-%% \ProvidesFile{genbst.mbs}[1995/02/02 1.6 (PWD)]
 %%   For use with BibTeX version 0.99a or later
 %%     and with LaTeX 2.09 or 2e
+%%
+%% The authors provide it `as is' and do not guarantee it in any way.
 %%-------------------------------------------------------------------
 %% NOTICE:
 %% This file may be used for non-profit purposes.
 %% It may not be distributed in exchange for money,
 %%   other than distribution costs.
 %%
-%% The author provides it `as is' and does not guarantee it in any way.
 %%
 %% Copyright (C) 1994, 1995 Patrick W. Daly
 %% Max-Planck-Institut f\"ur Aeronomie
@@ -31,7 +30,19 @@
 %% SPAN--     nsp::linmpi::daly    (note nsp also known as ecd1)
 %% Internet-- daly@linmpi.dnet.gwdg.de
 %%-----------------------------------------------------------
-%% \CharacterTable
+%% We modified the style-file produced by makebst as described above to
+%% list address of the publisher then the publisher separated by a colon.
+%%
+%% Authors: Julian B. Dierkes and Hugh W. Louch
+%% Dept. of Sociology, Princeton University
+%%-----------------------------------------------------------
+%% I also uploaded it to GitHub to be more readily accessible and modifiable.
+%%
+%% Author: Molly M. King
+%% Department of Sociology, Stanford University / University of Santa Clara
+%%-----------------------------------------------------------
+%%
+%% CHARACTER TABLE
 %%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
 %%   Digits        \0\1\2\3\4\5\6\7\8\9
@@ -55,13 +66,6 @@
  %   \bibitem[\protect\citeauthoryear{Jones, Baker, and Smith}
  %        {Jones et al.}{1990}{key}...
 %%---------------------------------------------------------------------
-
-%%We modified the style-file produced by makebst as described above to
-%%list address of the publisher then the publisher separated by a
-%%colon.
-
-%%Authors: Julian B. Dierkes and Hugh W. Louch
-%%Dept. of Sociology, Princeton University
 
 ENTRY
   { abstract
@@ -1335,4 +1339,4 @@ FUNCTION {end.bib}
 EXECUTE {end.bib}
 %% End of customized bst file
 %%
-%% End of file `ajs.bst'.
+%% End of file `asa.bst'.
