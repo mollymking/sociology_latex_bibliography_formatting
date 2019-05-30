@@ -36,6 +36,9 @@
 %% Authors: Julian B. Dierkes and Hugh W. Louch
 %% Dept. of Sociology, Princeton University
 %%-----------------------------------------------------------
+%% I modified the style-file to be more in line with ASA
+%% (American Sociological Association) style guide v4
+%% and include URLs in `misc' (miscellaneous) references.
 %% I also uploaded it to GitHub to be more readily accessible and modifiable.
 %%
 %% Author: Molly M. King
@@ -91,6 +94,7 @@ ENTRY
     type
     volume
     year
+    url
   }
   {}
   { label extra.label sort.label }
@@ -699,6 +703,15 @@ FUNCTION {format.incoll.inproc.crossref}
   " \cite{" * crossref * "}" *
 }
 
+FUNCTION {format.url}
+{ url empty$
+    { "" }
+    { tie.or.space.connect
+      "(" * url * ")"
+    }
+  if$
+}
+
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
@@ -907,6 +920,8 @@ FUNCTION {misc}
   format.title output
   new.block
   howpublished output
+  new.block
+  format.url output
   new.block
   note output
   fin.entry
