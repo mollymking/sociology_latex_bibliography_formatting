@@ -917,7 +917,14 @@ FUNCTION {misc}
   author format.key output
   format.date "year" output.check
   new.block
-  format.title output
+  title empty$
+    { format.title "title and booktitle" output.check
+      format.btitle "title" output.check
+    }
+    { format.title output.nonnull
+      format.title "title" output.check
+    }
+  if$
   new.block
   howpublished output
   new.block
