@@ -935,7 +935,7 @@ FUNCTION {misc}
   new.block
   title empty$
     { format.title "title and booktitle" output.check
-      format.btitle "title" output.check
+      format.btitle "booktitle" output.check
     }
     { format.title output.nonnull
       format.title "title" output.check
