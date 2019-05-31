@@ -345,8 +345,8 @@ FUNCTION {format.editors}
     { "" }
     { editor format.names
       editor num.names$ #1 >
-        { " (eds.)" * }
-        { " (ed.)" * }
+        { ", eds." * }
+        { ", ed." * }
       if$
     }
   if$
