@@ -68,6 +68,12 @@
  % The form of the bibitem entries is
  %   \bibitem[\protect\citeauthoryear{Jones, Baker, and Smith}
  %        {Jones et al.}{1990}{key}...
+
+
+%%%---------------------------------------------------------------------
+%Other Packages
+
+\usepackage[breaklinks]{hyperref}
 %%---------------------------------------------------------------------
 
 ENTRY
@@ -95,6 +101,7 @@ ENTRY
     volume
     year
     url
+    doi
   }
   {}
   { label extra.label sort.label }
@@ -706,8 +713,17 @@ FUNCTION {format.incoll.inproc.crossref}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { tie.or.space.connect
-      "(" * url * ")"
+    { tie.or.space.connect    % url is not empty for @misc item --> record in bibliography
+      "(" * url * ")"         % Attempt to make link clickable - not working yet: "(\url{" * url * "})"
+    }
+  if$
+}
+
+FUNCTION {format.doi}
+{ doi empty$
+    { "" }
+    { tie.or.space.connect         % record doi
+      "(" * doi * ")"
     }
   if$
 }
@@ -928,7 +944,12 @@ FUNCTION {misc}
   new.block
   howpublished output
   new.block
-  format.url output
+  url empty$
+    { format.doi output
+    }
+    { format.url output
+    }
+  if$
   new.block
   note output
   fin.entry
