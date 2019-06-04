@@ -1019,8 +1019,6 @@ FUNCTION {misc}
     { format.doi output }
     { format.url output }
   if$
-  new.block
-  note output
   fin.entry
 }
 
@@ -1069,8 +1067,6 @@ FUNCTION {techreport}
   format.tr.number output.nonnull
   institution "institution" output.check
   address output
-  new.block
-  note output
   fin.entry
 }
 
@@ -1082,7 +1078,6 @@ FUNCTION {unpublished}
   new.block
   format.title "title" output.check
   new.block
-  note "note" output.check
   fin.entry
 }
 
