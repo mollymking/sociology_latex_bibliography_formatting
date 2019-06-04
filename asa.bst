@@ -74,6 +74,7 @@
 %Other Packages
 
 \usepackage[breaklinks]{hyperref}
+\urlstyle{same}  % don't use monospace font for urls
 %%---------------------------------------------------------------------
 
 ENTRY
@@ -773,17 +774,15 @@ FUNCTION {format.incoll.inproc.crossref}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { tie.or.space.connect    % url is not empty for @misc item --> record in bibliography
-      "(" * url * ")"         % Attempt to make link clickable - not working yet: "(\url{" * url * "})"
-    }
+    {   " (" * url * ")" *     % url is not empty for @misc item --> record in bibliography
+    }                          % Attempt to make link clickable - not working yet: "(\url{" * url * "})"
   if$
 }
 
 FUNCTION {format.doi}
 { doi empty$
     { "" }
-    { tie.or.space.connect         % record doi
-      "(" * doi * ")"
+    { " (" * doi * ")" *
     }
   if$
 }
@@ -1005,10 +1004,8 @@ FUNCTION {misc}
   howpublished output
   new.block
   url empty$
-    { format.doi output
-    }
-    { format.url output
-    }
+    { format.doi output }
+    { format.url output }
   if$
   new.block
   note output
