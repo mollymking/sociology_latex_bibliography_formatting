@@ -505,6 +505,9 @@ FUNCTION {n.dashify}
 FUNCTION {word.in}
 { "In " }
 
+FUNCTION {word.smallin}
+{ "in " }
+
 FUNCTION {format.date}
 { year duplicate$ empty$
     { "empty year in " cite$ * "; set to ????" * warning$
