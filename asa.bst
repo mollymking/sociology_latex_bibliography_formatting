@@ -619,6 +619,17 @@ FUNCTION {format.pages}
   if$
 }
 
+FUNCTION {format.Ppages}
+{ pages empty$
+    { "" }
+    { pages multi.page.check
+        { "Pp." pages n.dashify tie.or.space.connect }
+        { "P." pages tie.or.space.connect }
+      if$
+    }
+  if$
+}
+
 FUNCTION {format.vol.num.pages}
 { volume field.or.null
   pages empty$
@@ -635,13 +646,62 @@ FUNCTION {format.chapter.pages}
 { chapter empty$
     'format.pages
     { type empty$
-        { "chapter" }
+        { "Chapter" }
         { type "l" change.case$ }
       if$
       chapter tie.or.space.connect
       pages empty$
         'skip$
         { ", " * format.pages * }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.chapter.Ppages}
+{ chapter empty$
+    'format.Ppages
+    { type empty$
+        { "Chapter" }
+        { type "l" change.case$ }
+      if$
+      chapter tie.or.space.connect
+      pages empty$
+        'skip$
+        { ", " * format.pages * }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.smallin.ed.booktitle}
+{ booktitle empty$
+    { "" }
+    { editor empty$
+        { pages empty$
+          {word.in booktitle emphasize *}
+          {word.smallin booktitle emphasize *}
+        if$
+        }
+        { pages empty$
+          {word.in booktitle emphasize *
+          ", " *
+          editor num.names$ #1 >
+            { "edited by " }
+            { "edited by " }
+          if$
+          * " " *
+          format.in.editors *}
+          {word.smallin booktitle emphasize *
+          ", " *
+          editor num.names$ #1 >
+            { "edited by " }
+            { "edited by " }
+          if$
+          * " " *
+          format.in.editors *}
+          if$
+        }
       if$
     }
   if$
@@ -848,17 +908,17 @@ FUNCTION {incollection}
   format.title "title" output.check
   new.block
   crossref missing$
-    { format.in.ed.booktitle "booktitle" output.check
+    { format.chapter.Ppages output
+      format.smallin.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
-      format.chapter.pages output
       new.sentence
       address output
       publisher "publisher" output.check.colon
       format.edition output
     }
     { format.incoll.inproc.crossref output.nonnull
-      format.chapter.pages output
+      format.chapter.Ppages output
     }
   if$
   new.block
