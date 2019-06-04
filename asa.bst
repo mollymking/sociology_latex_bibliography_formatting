@@ -522,6 +522,10 @@ FUNCTION {format.btitle}
 { title emphasize
 }
 
+FUNCTION {format.pubtitle}
+{ booktitle emphasize
+}
+
 FUNCTION {tie.or.space.connect}
 { duplicate$ text.length$ #3 <
     { "~" }
@@ -995,12 +999,17 @@ FUNCTION {misc}
   author format.key output
   format.date "year" output.check
   new.block
-  title empty$
-    { format.title "title and booktitle" output.check
-      format.btitle "booktitle" output.check
+  format.title "title" output.check
+  new.block
+  crossref missing$
+    { format.in.ed.booktitle "booktitle" output.check
+      format.bvolume output
+      format.number.series output
+      new.sentence
+      format.edition output
     }
-    { format.title output.nonnull
-      format.title "title" output.check
+    { format.incoll.inproc.crossref output.nonnull
+      format.chapter.pages output
     }
   if$
   new.block
