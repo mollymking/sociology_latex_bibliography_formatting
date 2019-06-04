@@ -1013,7 +1013,9 @@ FUNCTION {misc}
     }
   if$
   new.block
-  howpublished output
+  organization output
+  publisher output
+  address output
   new.block
   url empty$
     { format.doi output }
