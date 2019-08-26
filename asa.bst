@@ -85,6 +85,7 @@ ENTRY
     chapter
     edition
     editor
+    translator
     howpublished
     institution
     journal
@@ -364,6 +365,14 @@ FUNCTION {format.in.editors}
 { editor empty$
     { "" }
     { editor format.names.ed
+    }
+  if$
+}
+
+FUNCTION {format.in.translators}
+{ translator empty$
+    { "" }
+    { translator format.names.ed
     }
   if$
 }
@@ -734,6 +743,20 @@ FUNCTION {format.in.ed.booktitle}
   if$
 }
 
+FUNCTION {format.translator}
+{ translator empty$
+    { "" }
+    { translator num.names$ #1 >
+        { "Translated by " }
+        { "Translated by " }
+    if$
+    * " " *
+    format.in.translators *
+  }
+if$
+}
+
+
 FUNCTION {format.thesis.type}
 { type empty$
     'skip$
@@ -839,7 +862,9 @@ FUNCTION {book}
     { format.bvolume output
       new.block
       format.number.series output
-      new.sentence
+      new.block
+      format.translator output
+      new.block
       address output
       publisher "publisher" output.check.colon
     }
@@ -861,6 +886,8 @@ FUNCTION {booklet}
   format.date "year" output.check
   new.block
   format.title "title" output.check
+  new.block
+  format.translator output
   new.block
   howpublished output
   address output
@@ -1012,6 +1039,11 @@ FUNCTION {misc}
       format.chapter.pages output
     }
   if$
+  %new.block
+  %translator empty$
+  %  { "" }
+  %  { format.translator output }
+  %if$
   new.block
   organization output
   publisher output
