@@ -77,6 +77,8 @@
 \urlstyle{same}  % don't use monospace font for urls
 %%---------------------------------------------------------------------
 
+\setcitestyle{round,aysep={},yysep={,},notesep={:}}
+
 ENTRY
   { abstract
     address
