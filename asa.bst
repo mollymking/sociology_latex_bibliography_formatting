@@ -809,7 +809,7 @@ FUNCTION {format.incoll.inproc.crossref}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    {   " (" * url * ")" *     % url is not empty for @misc item --> record in bibliography
+    {   " " * url * "." *     % url is not empty for @misc item --> record in bibliography
     }                          % Attempt to make link clickable - not working yet: "(\url{" * url * "})"
   if$
 }
@@ -817,7 +817,8 @@ FUNCTION {format.url}
 FUNCTION {format.doi}
 { doi empty$
     { "" }
-    { " (" * doi * ")" *
+    { " " * doi * "." *
+    }
     }
   if$
 }
