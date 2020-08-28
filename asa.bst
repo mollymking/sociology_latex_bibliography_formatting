@@ -809,7 +809,7 @@ FUNCTION {format.incoll.inproc.crossref}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    {   " " * url * "." *     % url is not empty for @misc item --> record in bibliography
+    {   ". " * url * "." *     % url is not empty for @misc item --> record in bibliography
     }                          % Attempt to make link clickable - not working yet: "(\url{" * url * "})"
   if$
 }
@@ -817,8 +817,15 @@ FUNCTION {format.url}
 FUNCTION {format.doi}
 { doi empty$
     { "" }
-    { " " * doi * "." *
+    { ". " * doi * "." *
     }
+  if$
+}
+
+FUNCTION {format.institution}
+{ institution empty$
+    { "" }
+    { ": " * institution * "."
     }
   if$
 }
@@ -1051,9 +1058,9 @@ FUNCTION {misc}
   %  { format.translator output }
   %if$
   new.block
-  organization output
-  publisher output
   address output
+  organization output
+  publisher "publisher" output.check.colon
   new.block
   url empty$
     { format.doi output }
@@ -1105,8 +1112,15 @@ FUNCTION {techreport}
   format.btitle "title" output.check
   new.block
   format.tr.number output.nonnull
-  institution "institution" output.check
+  new.block
   address output
+  format.institution output
+  if$
+  url empty$
+    { format.doi output }
+    { format.url output }
+  if$
+  note output
   fin.entry
 }
 
@@ -1120,8 +1134,15 @@ FUNCTION {unpublished}
   new.block
   booktitle output
   new.block
-  institution "institution" output.check
   address output
+  format.institution output
+  new.block
+  if$
+  url empty$
+    { format.doi output }
+    { format.url output }
+  if$
+  note output
   fin.entry
 }
 
