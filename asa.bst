@@ -74,13 +74,13 @@
 %%   Right brace   \}     Tilde         \~}
 %%
 %%%---------------------------------------------------------------------
-%Other Packages
+%Other Commands to include in .tex file:
 
-\usepackage[breaklinks]{hyperref}
-\urlstyle{same}  % don't use monospace font for urls
+%\usepackage[breaklinks]{hyperref}
+%\urlstyle{same}  % don't use monospace font for urls
+%\setcitestyle{round,aysep={},yysep={,},notesep={:}}
+
 %%---------------------------------------------------------------------
-
-\setcitestyle{round,aysep={},yysep={,},notesep={:}}
 
 ENTRY
   { abstract
